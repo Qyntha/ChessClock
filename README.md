@@ -52,29 +52,11 @@
    app/build/outputs/apk/debug/app-debug.apk
    ```
 
-   
-
-   5. 拷到手机安装即可（首次需允许未知来源应用）。
+   拷到手机安装即可（首次需允许未知来源应用）。
 
    或用命令行：
    ```bash
    ./gradlew assembleDebug
-
-## 项目结构
-
-app/src/main/java/com/example/chessclock/
-├── MainActivity.kt              # 屏幕常亮、edge-to-edge、挂载 Compose
-├── ChessClockViewModel.kt       # 全部计时逻辑、协程、设置持久化
-├── model/
-│   └── ChessClockState.kt       # GameStatus、ClockPhase、PlayerClock、ChessClockState、ClockSettings、ClockPresets
-├── audio/
-│   └── ClockSoundPlayer.kt      # SoundPool 提示音播放
-└── ui/
-    ├── ChessClockApp.kt         # 两个界面切换 + 返回键处理
-    ├── ChessClockScreen.kt      # 左右卡片、控制栏、终局弹窗
-    ├── SettingsScreen.kt        # 设置页
-    ├── TimeFormat.kt            # 时间格式化
-    └── theme/                   # 深色配色
 
 ## 工具脚本
 
