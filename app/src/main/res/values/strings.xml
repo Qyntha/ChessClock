@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">棋钟</string>
+
+    <!-- 玩家与操作 -->
+    <string name="action_start">开始</string>
+    <string name="action_pause">暂停</string>
+    <string name="action_resume">继续</string>
+    <string name="action_reset">重置</string>
+    <string name="action_settings">设置</string>
+    <string name="action_back">返回</string>
+    <string name="action_resign">认输</string>
+    <string name="action_draw">和棋</string>
+    <string name="action_new_game">再来一局</string>
+    <string name="action_view_board">查看棋局</string>
+    <string name="action_confirm">确定</string>
+    <string name="action_cancel">取消</string>
+
+    <!-- 状态文案 -->
+    <string name="status_idle">准备开始</string>
+    <string name="status_running">对局中</string>
+    <string name="status_paused">已暂停</string>
+    <string name="status_finished">对局结束</string>
+    <string name="hint_tap_to_start">轻触卡片开始计时</string>
+    <string name="hint_tap_to_move">走棋中 · 轻触本卡走子</string>
+    <string name="hint_tap_to_resume">已暂停 · 轻触继续</string>
+    <string name="hint_waiting">等待对手</string>
+    <string name="move_count">第 %1$d 手</string>
+
+    <!-- 计时阶段 -->
+    <string name="caption_main_time">主时间</string>
+    <string name="caption_byoyomi">每步 %1$d 秒</string>
+    <string name="chip_byoyomi_reserve">读秒 %1$d 秒/步</string>
+    <string name="chip_byoyomi_running">读秒中</string>
+    <string name="chip_byoyomi_off">读秒已关闭</string>
+    <string name="chip_fischer">加秒 +%1$d</string>
+    <string name="badge_winner">获胜</string>
+    <string name="badge_loser">判负</string>
+    <string name="badge_draw">和棋</string>
+
+    <!-- 终局弹窗 -->
+    <string name="game_over_title">对局结束</string>
+    <string name="result_timeout_byoyomi">%1$s 读秒走完仍未走子，判负。%2$s 获胜。</string>
+    <string name="result_timeout_main">%1$s 主时间走完，判负。%2$s 获胜。</string>
+    <string name="result_resign">%1$s 认输，%2$s 获胜。</string>
+    <string name="result_draw">双方和棋。</string>
+
+    <!-- 确认弹窗 -->
+    <string name="reset_confirm_title">重置对局</string>
+    <string name="reset_confirm_message">当前对局会被清零并重新开始，确定重置吗？</string>
+    <string name="settings_apply_confirm_title">应用设置</string>
+    <string name="settings_apply_confirm_message">应用设置会重置当前对局，确定继续吗？</string>
+
+    <!-- 设置页 -->
+    <string name="settings_title">设置</string>
+    <string name="settings_players">玩家名字</string>
+    <string name="settings_left">左方</string>
+    <string name="settings_right">右方</string>
+    <string name="settings_main_time">主时间</string>
+    <string name="settings_byoyomi">读秒（每步）</string>
+    <string name="settings_fischer">Fischer 加秒</string>
+    <string name="settings_sound">读秒提示音</string>
+    <string name="unit_minutes">分钟</string>
+    <string name="unit_seconds_per_move">秒 / 步</string>
+    <string name="settings_preset_minutes">%1$d 分</string>
+    <string name="settings_preset_seconds">%1$d 秒</string>
+    <string name="settings_preset_fischer">+%1$d 秒</string>
+    <string name="settings_presets">常用值</string>
+    <string name="settings_presets_hint">常用值：点数字直接设为该值，点 × 删除，点 ＋ 把当前值加进去（立即保存）。</string>
+    <string name="settings_preset_add">＋ %1$s</string>
+    <string name="settings_preset_delete_action">删除常用值</string>
+    <string name="settings_switch_on">开启</string>
+    <string name="settings_switch_off">关闭</string>
+    <string name="settings_fischer_hint">加秒与读秒建议二选一；同时开启时每走完一步都会给主时间加秒。</string>
+    <string name="settings_fischer_need_main">纯读秒模式下没有主时间，加秒不生效。</string>
+    <string name="settings_need_one_clock">主时间和读秒至少要开一个。</string>
+    <string name="settings_sound_hint">读秒 ≤5 秒时每秒响一次，时间走完判负再响一次。</string>
+    <string name="settings_apply">开始新对局</string>
+    <string name="settings_note">规则：主时间开 + 读秒开 = 标准读秒（走完一步读秒重置，轮到该方 N 秒内没走完判负）；主时间开 + 读秒关 = 主时间走完判负；主时间关 + 读秒开 = 纯读秒。修改任意设置都会重置当前对局。</string>
+</resources>
