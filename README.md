@@ -1,0 +1,86 @@
+# ChessClock 棋钟
+
+一个 Android 横屏棋钟，用于同学间组织的国际象棋 / 象棋比赛。深色主题，左右双卡片，支持标准读秒、纯读秒、Fischer 加秒、认输和棋等规则。
+
+## 功能
+
+### 计时规则
+- **标准读秒**：主时间 + 读秒。走完一步读秒重置为 N 秒；轮到该方时 N 秒内没走完判负。
+- **纯读秒**：关闭主时间，每步必须在 N 秒内走完，走完重置。
+- **主时间判负**：关闭读秒，主时间走完立即判负。
+- **Fischer 加秒**：每走完一步给主时间 +N 秒，可累积。
+
+> 主时间和读秒至少保留一种，二者不能同时关闭。加秒与读秒建议二选一。
+
+### 对局操作
+- 点自己的卡片走子切换计时，250ms 内重复点击被忽略，点对方卡片无效。
+- 中间控制栏：开始 / 暂停 / 继续 / 重置 / 设置 / 和棋 / 手数显示。
+- 每张卡片右上角有「认输」按钮，点谁就是谁认输。
+- 终局弹窗显示原因（读秒超时 / 主时间超时 / 认输 / 和棋），可「再来一局」或「查看棋局」。
+
+### 显示与提示
+- 当前走棋方绿色描边高亮，等待方压暗到 42% 透明度。
+- 时间数字等宽字体，字号按卡片尺寸自适应（40–180sp）。
+- 读秒阶段数字变橙；剩余 ≤5 秒变红并以 500ms 周期闪烁。
+- 读秒 ≤5 秒每秒提示音，时间到判负提示音（可在设置中关闭）。
+- 屏幕常亮，横屏锁定。
+
+### 设置
+- 主时间 1–60 分钟、读秒 1–60 秒、加秒 0–60 秒，滑块 + 数字输入框双向绑定。
+- 每项有可自定义的常用值芯片，支持增删。
+- 可设置左右玩家名字（默认「玩家 1 / 玩家 2」）。
+- 所有设置用 SharedPreferences 保存，重启保留。
+
+## 技术要点
+
+- 计时基于 `SystemClock.elapsedRealtime()`，协程每 50ms 刷新，按两次刷新的真实差值扣时，不累积漂移。
+- 暂停时先把未结算时间结清，不会白送时间。
+- 主时间用完立刻进入读秒，溢出部分从读秒继续扣。
+- 每方读秒独立，谁先用完主时间谁先进入读秒。
+
+## 构建
+
+1. 用 Android Studio 打开项目根目录。
+
+2. 等待 Gradle 同步完成。
+
+3. 菜单 **Build → Build Bundle(s) / APK(s) → Build APK(s)**。
+
+4. 生成的 debug APK 在：
+
+   ```
+   app/build/outputs/apk/debug/app-debug.apk
+   ```
+
+   
+
+   5. 拷到手机安装即可（首次需允许未知来源应用）。
+
+   或用命令行：
+   ```bash
+   ./gradlew assembleDebug
+
+## 项目结构
+
+app/src/main/java/com/example/chessclock/
+├── MainActivity.kt              # 屏幕常亮、edge-to-edge、挂载 Compose
+├── ChessClockViewModel.kt       # 全部计时逻辑、协程、设置持久化
+├── model/
+│   └── ChessClockState.kt       # GameStatus、ClockPhase、PlayerClock、ChessClockState、ClockSettings、ClockPresets
+├── audio/
+│   └── ClockSoundPlayer.kt      # SoundPool 提示音播放
+└── ui/
+    ├── ChessClockApp.kt         # 两个界面切换 + 返回键处理
+    ├── ChessClockScreen.kt      # 左右卡片、控制栏、终局弹窗
+    ├── SettingsScreen.kt        # 设置页
+    ├── TimeFormat.kt            # 时间格式化
+    └── theme/                   # 深色配色
+
+## 工具脚本
+
+- `tools/make_icons.ps1`：从源图生成各密度图标（PowerShell）。
+- `tools/make_sounds.ps1`：合成提示音 wav 文件（PowerShell）。
+
+## 许可
+
+暂未指定。如需开源许可可自行添加。
